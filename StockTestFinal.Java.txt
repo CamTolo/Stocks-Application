@@ -1,0 +1,118 @@
+import java.util.Scanner;
+import java.util.Set;
+/*
+ * Name: Cameron Tolodziecki 
+ * Final Project for CPT 236 Java Programming
+ * Fall, 2022
+ * The Purpose of this progarm is to input stock names and stock symbols to get output
+        information such as price, number of shares etc. 
+ */
+
+/**
+ *
+ * @author ctolo
+ */
+public class StockTest {
+
+    public static void main(String[] args) 
+    {
+       Scanner input = new Scanner(System.in);
+       
+       //add stock arrays for stock outputs
+       Stock[] stocks = new Stock[10];
+       int[] numOfStocks = new int[10];
+       double[] stockTotal = new double[10];
+       
+       //add ORCL stock
+       stocks[0] = new Stock("ORCL", "Oracle Corporation");
+       stocks[0].setSellingPrice(34.5);
+       stocks[0].setSellingPrice(34.35);
+       numOfStocks[0] = 10;
+       
+       stocks[1] = new Stock("Snap", "Snap");
+       stocks[1].setSellingPrice(38.31);
+       stocks[1].setSellingPrice(38.31);
+       numOfStocks[1] = 10;
+       
+       stocks[2] = new Stock("AAPL", "Apple Inc.");
+       stocks[2].setSellingPrice(162.76);
+       stocks[2].setSellingPrice(162.76);
+       numOfStocks[2] = 10;
+       
+       stocks[3] = new Stock("TWTR", "Twitter");
+       stocks[3].setSellingPrice(36.83);
+       stocks[3].setSellingPrice(36.83);
+       numOfStocks[3] = 10;
+       
+       stocks[4] = new Stock("TSLA", "Tesla");
+       stocks[4].setSellingPrice(864.00);
+       stocks[4].setSellingPrice(864.00);
+       numOfStocks[4] = 10;
+       
+       stocks[5] = new Stock("NFLX", "Netflix");
+       stocks[5].setSellingPrice(387.64);
+       stocks[5].setSellingPrice(387.64);
+       numOfStocks[5] = 10;
+       
+       stocks[6] = new Stock("ORCL", "Oracle Corporation");
+       stocks[6].setSellingPrice(34.5);
+       stocks[6].setSellingPrice(34.35);
+       numOfStocks[6] = 10;
+       
+       stocks[7] = new Stock("FB", "Facebook");
+       stocks[7].setSellingPrice(204.54);
+       stocks[7].setSellingPrice(204.54);
+       numOfStocks[7] = 10;
+       
+       stocks[8] = new Stock("MSFT", "Microsoft");
+       stocks[8].setSellingPrice(294.30);
+       stocks[8].setSellingPrice(294.30);
+       numOfStocks[8] = 10;
+      
+       stocks[9] = new Stock("DIS", "Disney");
+       stocks[9].setSellingPrice(145.53);
+       stocks[9].setSellingPrice(145.53);
+       numOfStocks[9] = 10;
+      
+       //display's symbol & name
+       for(int i = 0; i < 10; i++)
+       {
+           System.out.println("Enter your stocks symbol: ");
+           String symbol = input.nextLine();
+           System.out.println("Enter the name of the stock: ");
+           String name = input.nextLine();
+           
+           stocks[i] = new Stock(symbol, name);
+           stocks[i].setSellingPrice(input.nextDouble());
+           stocks[i].setSellingPrice(input.nextDouble());
+           System.out.print("Enter number of stocks purchased: ");
+           numOfStocks[i] = Integer.parseInt(input.nextLine());
+       }
+       //for loop for selling price after 2 days
+       for(int i = 0; i < 10; i++)
+       {
+           System.out.println("Enter stock selling price: " + (i + 1));
+           stocks[i].setSellingPrice(input.nextDouble());
+       }
+       
+       //Profit for each stock
+       for(int i = 0; i < 10; i++)
+       {
+           stockTotal[i] = stocks[i].getSellingPrice() - stocks[i].getPreviousClosingPrice();
+           stockTotal[i] = numOfStocks[i];
+       }
+       
+       //Add output table
+       System.out.println(String.format("%-20s%-20s%-20s%-20s%-20s%-20s%s", "Stock Symbol", "Stock Name", "Number of Stock"
+       ,"Total Purchase Cost", "Total Selling Cost", "Profit Made" , "Profit Percent"));
+       
+       for(int i = 0; i < 10; i++)
+       {
+           System.out.println(stocks[i] + String.format("%-20d%2f", numOfStocks[i], stockTotal[i]));
+       }
+       
+       //Display name
+       System.out.println("Cameron Tolodziecki: Investment Advisor");
+    }
+    
+}
